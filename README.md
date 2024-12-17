@@ -15,7 +15,7 @@ This tool analyzes risk factors from company 10-K filings using GPT-4 to identif
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/risk-analysis-tool.git
+git clone https://github.com/rinadelph/risk-analysis-tool.git
 cd risk-analysis-tool
 ```
 
