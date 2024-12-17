@@ -1,0 +1,8 @@
+{
+    "filing_date": "2024-01-01T00:00:00-05:00",
+    "stock_file": "history\\AAPL\\AAPL_market_2024-01-01.parquet",
+    "spy_file": "history\\AAPL\\SPY_market_2024-01-01.parquet",
+    "data_points": 123,
+    "start_date": "2023-10-03T00:00:00-04:00",
+    "end_date": "2024-03-28T00:00:00-04:00"
+}

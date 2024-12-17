@@ -1,0 +1,108 @@
+10-K VIEWER APPLICATION STRUCTURE
+===============================
+
+1. IMPORTS AND CONFIGURATION
+   - Uses tkinter for GUI
+   - yfinance for stock data
+   - BeautifulSoup for web scraping
+   - Logging configuration for debugging
+   - Various utility imports (threading, json, etc.)
+
+2. GLOBAL CONSTANTS
+   - SEC_REQUEST_DELAY: 100ms delay between SEC requests
+   - SEC_CACHE_FILE: Cache file for SEC CIK numbers
+   - SEC_CACHE_DURATION: 24-hour cache duration
+   - SEC_API_DELAY: API request delay
+   - SEC_MAX_RETRIES: Maximum retry attempts
+   - SEC_BACKOFF_FACTOR: Exponential backoff for retries
+
+3. UTILITY FUNCTIONS
+   a. get_sp500_tickers()
+      - Scrapes Wikipedia for S&P 500 company tickers
+      - Falls back to top 20 companies if scraping fails
+   
+   b. Cache Management Functions
+      - load_cached_data(): Loads company data from cache
+      - save_cached_data(): Saves company data to cache
+      - load_sec_cache(): Loads SEC CIK numbers cache
+      - save_sec_cache(): Saves SEC CIK numbers cache
+   
+   c. get_cik_from_ticker()
+      - Retrieves CIK number from SEC for given ticker
+      - Implements caching and retry logic
+
+4. CLASS STRUCTURE
+
+   A. MainMenu Class
+      - Main application window
+      - Options:
+        * Ticker Lookup
+        * S&P 500 View
+      Methods:
+      - open_ticker_lookup()
+      - open_sp500_view()
+      - on_window_close()
+
+   B. SP500Viewer Class
+      - Displays S&P 500 companies in a table
+      - Features:
+        * Sortable columns
+        * Double-click for detailed view
+        * Refresh capability
+      Methods:
+      - load_sp500_data()
+      - sort_treeview()
+      - refresh_data()
+      - on_double_click()
+
+   C. TenKViewer Class
+      - Detailed company information viewer
+      - Features:
+        * Tabbed interface (General, Financial, Market data)
+        * Scrollable information panels
+        * CIK number display
+      Methods:
+      - setup_scrollable_frame()
+      - create_info_field()
+      - display_company_info()
+      - search_ticker()
+
+5. DATA FLOW
+   a. Initial Load
+      - Checks cache for existing data
+      - If cache expired/missing, fetches fresh data
+   
+   b. Data Updates
+      - Manual refresh option
+      - 24-hour cache expiration
+   
+   c. Company Information Display
+      - Organized in three categories:
+        * General Information
+        * Financial Information
+        * Market Data
+
+6. ERROR HANDLING
+   - Logging for debugging
+   - User-friendly error messages
+   - Retry logic for API calls
+   - Fallback mechanisms for data fetching
+
+7. CACHING SYSTEM
+   - Company data cache (24-hour validity)
+   - SEC CIK number cache
+   - Reduces API calls and improves performance
+
+8. MAIN EXECUTION
+   - Creates root window
+   - Initializes MainMenu
+   - Starts application loop
+
+You can modify this structure by:
+1. Adding new features to any class
+2. Modifying display formats
+3. Adding new data sources
+4. Changing cache duration
+5. Adding new visualization options
+6. Modifying error handling
+7. Adding new tabs or information categories 

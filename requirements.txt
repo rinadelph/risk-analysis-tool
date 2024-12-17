@@ -1,0 +1,9 @@
+requests
+yfinance
+python-dotenv
+openai
+rich
+beautifulsoup4
+pandas
+numpy
+lxml 
